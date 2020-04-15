@@ -1,4 +1,12 @@
-fetch("http://localhost:3000/api/v1/todos",{
+const base_url = "https://todo-nodejs-jw05.herokuapp.com";
+
+//redirect if not logged in
+if (!localStorage.getItem("token")){
+    window.location.href = "login.html";
+}
+
+//fetch all todos on load
+fetch(base_url + "/api/v1/todos",{
     'headers': {
         'Authorization': 'Bearer ' + localStorage.getItem('token')
     }
